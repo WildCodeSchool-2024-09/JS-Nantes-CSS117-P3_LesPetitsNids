@@ -9,4 +9,10 @@ export interface NurseryData {
   ns_num_tel: string;
 }
 
+interface NurseryDetails extends NurseryData {
+  ns_num_tel: string;
+  ns_mail: string;
+  ns_description: string;
+}
+
 // Interface à garder pour la suite

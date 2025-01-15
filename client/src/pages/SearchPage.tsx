@@ -4,11 +4,14 @@ import "./SearchPage.css";
 
 import { Link } from "react-router-dom";
 
-import Nursery from "../components/Nursery";
 import type { NurseryData } from "../types/nursery";
+
+import Nursery from "../components/Nursery";
 
 function SearchPage() {
   const [data, setData] = useState<null | NurseryData[]>(null);
+
+  console.warn(data);
 
   const [userEntry, setUserEntry] = useState<string>("");
 
@@ -21,7 +24,6 @@ function SearchPage() {
   const filteredData = data?.filter((el) => {
     return el.ns_name.toLowerCase().includes(userEntry.toLowerCase());
   });
-  console.warn(filteredData);
 
   return (
     <>

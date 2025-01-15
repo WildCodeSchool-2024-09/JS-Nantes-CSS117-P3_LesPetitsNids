@@ -9,6 +9,7 @@ function LandingPage() {
       <div className="white-painting">
         <figure className="mother">
           <img src="/mother.svg" alt="" />
+
           <figcaption className="welcome">
             Garde d'enfant à la demande
           </figcaption>

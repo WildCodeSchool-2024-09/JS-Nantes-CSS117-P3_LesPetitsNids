@@ -1,6 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import { Link } from "react-router-dom";
-import type { NurseryData } from "../types/nursery";
+import type { NurseryDetails } from "../types/nursery";
 import "./NurseryPage.css";
 import { useState } from "react";
 import ModalConnexion from "../components/ModalConnexion";
@@ -18,7 +18,7 @@ function NurseryPage() {
     setIsVisible((prevState) => !prevState);
   };
 
-  const data = useLoaderData() as NurseryData;
+  const data = useLoaderData() as NurseryDetails;
 
   if (!data) {
     return <p>Erreur : Impossible de charger les données pour cette crèche.</p>;
@@ -30,7 +30,7 @@ function NurseryPage() {
         <Link to={"/search"} className="back-button">
           <span className="arrow" />
         </Link>
-        <section>
+        <section className="nursery-name">
           <h1>Crèche {data.ns_name}</h1>
           <p>Mettre type de crèche ici</p>
         </section>
@@ -39,15 +39,10 @@ function NurseryPage() {
         <img src={data.ns_image} alt={`L'image de ${data.ns_name}`} />
         <section className="nursery-description">
           <h2 className="presentation">Présentation</h2>
-          <p>
-            La crèche « {data.ns_name} » n’est pas qu’un lieu de garde c’est
-            surtout un lieu d’échange et d’accueil des enfants et des familles
-            dans une confiance réciproque où le respect, l’autonomie et la
-            sécurité sont des références privilégiées dans notre projet.
-          </p>
+          <p>{data.ns_description}</p>
           <div className={isVisible ? "hidden" : "visible"}>
             <p>Informations suplémentaire:</p>
-            <p>address : {data.ns_address}</p>
+            <p>Adresse : {data.ns_address}</p>
           </div>
           <section className="contact">
             <button
@@ -62,10 +57,10 @@ function NurseryPage() {
                 <p>Horaires : Lundi-Samedi : 9h-16h</p>
               </li>
               <li>
-                <p>Téléphone :</p>
+                <p>Numéro de téléphone : {data.ns_num_tel}</p>
               </li>
               <li>
-                <p>Mail :</p>
+                <p>mail : {data.ns_mail}</p>
               </li>
             </ul>
           </section>
@@ -74,13 +69,15 @@ function NurseryPage() {
             <p>
               Connectez-vous pour accéder aux disponibilités de cette crèche.
             </p>
-            <button
-              className="not-connected"
-              onClick={() => setShowModal(true)}
-              type="button"
-            >
-              Pas Connecté ?
-            </button>
+            <Link to="/loginandregister">
+              <button
+                className="connect-button not-connected"
+                onClick={() => setShowModal(true)}
+                type="button"
+              >
+                Pas Connecté ?
+              </button>
+            </Link>
             {showModal && <ModalConnexion onClose={handleButtonClick} />}
           </section>
         </section>
