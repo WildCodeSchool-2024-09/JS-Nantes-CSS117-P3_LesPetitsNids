@@ -1,5 +1,6 @@
 import type { FormEvent } from "react";
-import { Link } from "react-router-dom";
+import "./LoginPageComponent.css";
+
 interface ParentProps {
   isParent: boolean;
   setIsParent: (isParent: boolean) => void;
@@ -15,7 +16,7 @@ function RegisterPageComponent({ isParent }: ParentProps) {
     <>
       <form onSubmit={onSubmit} className="login-form">
         {isParent ? (
-          <div className="registration-parents">
+          <div className="user-registration">
             <input
               type="text"
               name="lastName"
@@ -32,7 +33,7 @@ function RegisterPageComponent({ isParent }: ParentProps) {
             />
           </div>
         ) : (
-          <div className="registration-nursery">
+          <div className="user-registration">
             <input
               type="text"
               name="nurseryName"
@@ -57,11 +58,11 @@ function RegisterPageComponent({ isParent }: ParentProps) {
           aria-label="Mot de passe"
           className="input-field"
         />
-        <Link to="" className="links">
-          Vous avez déjà un compte ? Se connecter
-        </Link>
-        <button className="button-secondary" type="submit">
-          Connexion
+        <button
+          className="button-secondary form-validation-button"
+          type="submit"
+        >
+          Créer le compte
         </button>
       </form>
     </>

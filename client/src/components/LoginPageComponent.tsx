@@ -1,10 +1,17 @@
+import type { FormEvent } from "react";
 import "./LoginPageComponent.css";
-import "../style/globals.css";
 
 function LoginPageComponent() {
+  function onSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = new FormData(e.currentTarget);
+    const formatedData = Object.fromEntries(form.entries());
+    console.warn(formatedData);
+  }
+
   return (
     <>
-      <form className="login-form">
+      <form onSubmit={onSubmit} className="login-form">
         <input
           type="email"
           name="email"
@@ -17,6 +24,12 @@ function LoginPageComponent() {
           placeholder="Mot de passe"
           className="input-field"
         />
+        <button
+          className="button-secondary form-validation-button"
+          type="submit"
+        >
+          Connexion
+        </button>
       </form>
     </>
   );

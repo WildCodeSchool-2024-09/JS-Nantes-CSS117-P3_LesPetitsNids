@@ -47,7 +47,7 @@ body {
   border-radius: 10px;
   font-family: var(--button-font);
   font-size: 20px;
-  padding: 10px 40px;
+  padding: 0;
   box-shadow: 0 2px 6px var(--shadowColor);
   border: none;
   font-weight: bold;
