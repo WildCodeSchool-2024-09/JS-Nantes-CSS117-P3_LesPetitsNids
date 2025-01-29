@@ -47,6 +47,8 @@ router.post("/api/booking", bookingActions.add);
 
 // User routes
 router.get("/api/parent", parentActions.browse);
+router.post("/api/parent", parentActions.add);
+
 router.get("/api/user", userActions.browse);
 
 router.post(
